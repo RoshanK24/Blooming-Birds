@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  @apply font-body text-ink antialiased;
+  @apply font-body text-base text-ink antialiased;
   background:
     radial-gradient(1100px 700px at 12% -8%, #ffe3d1 0%, transparent 55%),
     radial-gradient(900px 650px at 92% 4%, #d7ecff 0%, transparent 55%),
@@ -68,7 +68,7 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display font-600 text-white transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 font-display text-base font-600 text-white transition-all duration-300 sm:px-7 sm:py-3.5;
     background: linear-gradient(135deg, #ff8c6b 0%, #ffab5e 100%);
     box-shadow: 0 10px 26px rgba(255, 140, 107, 0.42);
   }
@@ -78,7 +78,7 @@ body {
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display font-600 text-ink transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 font-display text-base font-600 text-ink transition-all duration-300 sm:px-7 sm:py-3.5;
   }
   .btn-ghost:hover {
     transform: translateY(-2px);
@@ -86,14 +86,49 @@ body {
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-display font-600 text-sm;
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 font-display text-sm font-600 sm:px-4 sm:py-1.5;
     background: rgba(255, 255, 255, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.7);
   }
 
   .section-title {
     @apply font-display font-700 text-ink leading-tight;
-    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    font-size: clamp(1.55rem, 5.5vw, 3rem);
+  }
+
+  .section-sub {
+    @apply font-body text-base leading-relaxed text-ink/65 lg:text-lg;
+  }
+
+  .card-title {
+    @apply font-display font-600 leading-snug text-ink;
+    @apply text-base lg:text-lg;
+  }
+
+  .card-title-bold {
+    @apply font-display font-700 leading-snug text-ink;
+    @apply text-base lg:text-xl;
+  }
+
+  .card-text {
+    @apply font-body leading-relaxed text-ink/65;
+    @apply text-sm sm:text-[0.95rem];
+  }
+
+  .body-lg {
+    @apply font-body leading-relaxed text-ink/70;
+    @apply text-base lg:text-lg;
+  }
+
+  .mobile-cta-frost {
+    background: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow:
+      0 20px 50px rgba(74, 59, 82, 0.16),
+      0 8px 28px rgba(255, 200, 180, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -188,8 +223,7 @@ body {
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
-/* ---- Flip cards (facilities) ---- */
-.flip { perspective: 1000px; }
+/* ---- Facility flip cards ---- */
 @keyframes mascotWave {
   0%, 100% { transform: rotate(-6deg); }
   50% { transform: rotate(18deg); }
@@ -201,32 +235,61 @@ body {
   60% { transform: rotate(7deg) scale(1.08); }
 }
 .group:hover .hover-pop { animation: popWiggle 0.6s ease-in-out; }
-.flip-inner {
+
+.flip-scene {
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.flip-card {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
-.flip:hover .flip-inner,
-.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+.flip-scene.is-flipped .flip-card {
+  transform: rotateY(180deg);
+}
+@media (hover: hover) {
+  .flip-scene:hover .flip-card {
+    transform: rotateY(180deg);
+  }
+}
 .flip-face {
   position: absolute;
   inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 1.25rem;
   padding: 0.75rem;
+  text-align: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
-.flip-back { transform: rotateY(180deg); }
-/* solid faces (no backdrop-filter) so the 3D flip never flattens/disappears */
-.flip-front {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+.flip-face-front {
+  transform: rotateY(0deg) translateZ(2px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 30px rgba(74, 59, 82, 0.1);
 }
-.flip:hover { z-index: 2; }
+.flip-face-back {
+  transform: rotateY(180deg) translateZ(2px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 30px rgba(74, 59, 82, 0.08);
+}
+.flip-scene.is-flipped {
+  z-index: 2;
+}
+@media (hover: hover) {
+  .flip-scene:hover {
+    z-index: 2;
+  }
+}

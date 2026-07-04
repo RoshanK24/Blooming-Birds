@@ -15,10 +15,10 @@ export default function FAQ() {
               <div key={i} className="reveal glass overflow-hidden rounded-2xl" style={{ transitionDelay: `${i * 50}ms` }}>
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left sm:gap-4 sm:px-5 sm:py-4"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-display font-600 text-ink">{f.q}</span>
+                  <span className="card-title pr-1">{f.q}</span>
                   <span
                     className={`grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/70 font-display text-ink transition-transform duration-300 ${
                       isOpen ? 'rotate-45' : ''
@@ -32,7 +32,7 @@ export default function FAQ() {
                   style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-5 font-body text-ink/70">{f.a}</p>
+                    <p className="card-text px-4 pb-4 text-ink/70 sm:px-5 sm:pb-5">{f.a}</p>
                   </div>
                 </div>
               </div>

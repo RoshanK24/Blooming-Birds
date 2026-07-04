@@ -22,7 +22,7 @@ export default function Contact() {
   };
 
   const field =
-    'w-full rounded-2xl border border-white/70 bg-white/55 px-4 py-3 font-body text-ink placeholder-ink/40 outline-none transition focus:border-coral/60 focus:bg-white/80';
+    'w-full rounded-2xl border border-white/70 bg-white/55 px-3.5 py-2.5 font-body text-base text-ink placeholder-ink/40 outline-none transition focus:border-coral/60 focus:bg-white/80 sm:px-4 sm:py-3';
 
   return (
     <section id="contact" className="px-4 py-16 sm:py-24">
@@ -37,20 +37,20 @@ export default function Contact() {
           {/* Info */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {info.map((it) => (
-              <div key={it.label} className="reveal glass glass-hover flex items-start gap-4 rounded-3xl p-5">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/60 text-2xl">
+              <div key={it.label} className="reveal glass glass-hover flex items-start gap-3 rounded-2xl p-4 sm:gap-4 sm:rounded-3xl sm:p-5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/60 text-xl sm:h-12 sm:w-12 sm:rounded-2xl sm:text-2xl">
                   {it.emoji}
                 </span>
                 <div>
-                  <div className="font-body text-xs font-700 uppercase tracking-wide text-ink/50">{it.label}</div>
-                  <div className="mt-0.5 font-display font-600 text-ink">{it.value}</div>
+                  <div className="font-body text-xs font-700 uppercase tracking-wide text-ink/50 sm:text-xs">{it.label}</div>
+                  <div className="card-title mt-0.5">{it.value}</div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Form */}
-          <div className="reveal glass-strong rounded-[2rem] p-6 sm:p-8">
+          <div className="reveal glass-strong rounded-[1.5rem] p-4 sm:rounded-[2rem] sm:p-8">
             <div className="grid gap-4 sm:grid-cols-2">
               <input className={field} placeholder="Parent's name *" value={form.parent} onChange={set('parent')} />
               <input className={field} placeholder="Phone number *" value={form.phone} onChange={set('phone')} />

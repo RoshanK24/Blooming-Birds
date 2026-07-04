@@ -3,10 +3,10 @@ import { miniArt } from './MiniArt.jsx';
 
 export function SectionHead({ eyebrow, title, sub }) {
   return (
-    <div className="reveal mx-auto mb-12 max-w-3xl text-center">
+    <div className="reveal mx-auto mb-8 max-w-3xl text-center sm:mb-12">
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
       <h2 className="section-title mt-4">{title}</h2>
-      {sub && <p className="mt-4 font-body text-lg text-ink/65">{sub}</p>}
+      {sub && <p className="section-sub mt-3 sm:mt-4">{sub}</p>}
     </div>
   );
 }
@@ -36,18 +36,18 @@ export function About() {
           title="A preschool built by a scientist, run with a mother's heart"
           sub="We believe the early years aren't a race. They're a season to explore, wonder, and grow — gently and joyfully."
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
           {pillars.map((p, i) => (
             <article
               key={p.title}
-              className="reveal glass glass-hover rounded-3xl p-6"
+              className="reveal glass glass-hover rounded-2xl p-3.5 sm:rounded-3xl sm:p-6"
               style={{ transitionDelay: `${i * 90}ms` }}
             >
-              <div className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${p.tint} text-3xl`}>
+              <div className={`grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br text-2xl sm:h-14 sm:w-14 sm:rounded-2xl sm:text-3xl ${p.tint}`}>
                 {p.emoji}
               </div>
-              <h3 className="mt-4 font-display font-600 text-lg text-ink">{p.title}</h3>
-              <p className="mt-2 font-body text-[0.95rem] text-ink/65">{p.text}</p>
+              <h3 className="card-title mt-2.5 sm:mt-4">{p.title}</h3>
+              <p className="card-text mt-1.5 sm:mt-2">{p.text}</p>
             </article>
           ))}
         </div>
@@ -63,21 +63,21 @@ export function WhyUs() {
     <section id="why" className="px-4 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHead eyebrow="💛 Why Parents Choose Us" title="Little things we do, that make a big difference" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {whyUs.map((w, i) => {
             const col = whyCycle[i % whyCycle.length];
             return (
               <article
                 key={w.title}
-                className="reveal group glass glass-hover relative overflow-hidden rounded-3xl p-5"
+                className="reveal group glass glass-hover relative overflow-hidden rounded-2xl p-3.5 sm:rounded-3xl sm:p-5"
                 style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <span className={`pointer-events-none absolute -right-7 -top-7 h-20 w-20 rounded-full ${blob[col]} blur-xl transition-transform duration-500 group-hover:scale-150`} />
-                <div className={`hover-pop relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${gradLight[col]} text-2xl`}>
+                <div className={`hover-pop relative grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br text-xl sm:h-12 sm:w-12 sm:rounded-2xl sm:text-2xl ${gradLight[col]}`}>
                   {w.emoji}
                 </div>
-                <h3 className="relative mt-3.5 font-display font-700 text-ink">{w.title}</h3>
-                <p className="relative mt-1 font-body text-sm text-ink/65">{w.text}</p>
+                <h3 className="card-title-bold relative mt-2.5 sm:mt-3.5">{w.title}</h3>
+                <p className="card-text relative mt-1">{w.text}</p>
               </article>
             );
           })}
@@ -103,28 +103,28 @@ export function Programs() {
           title="The right nest for every age"
           sub="Four thoughtfully designed programs that grow with your child, from first steps to school-ready."
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
           {programs.map((p, i) => {
             const c = programColors[p.color];
             return (
               <article
                 key={p.name}
-                className="reveal glass glass-hover group relative overflow-hidden rounded-[1.75rem] p-6"
+                className="reveal glass glass-hover group relative overflow-hidden rounded-2xl p-3.5 sm:rounded-[1.75rem] sm:p-6"
                 style={{ transitionDelay: `${i * 90}ms` }}
               >
                 <div className={`absolute -right-8 -top-8 h-24 w-24 rounded-full ${c.orb} opacity-20 blur-xl transition-transform group-hover:scale-150`} />
                 <div className="relative">
-                  <span className="text-4xl">{p.emoji}</span>
-                  <div className="mt-3">
-                    <h3 className="font-display font-700 text-xl text-ink">{p.name}</h3>
-                    <span className={`mt-1 inline-block rounded-full ${c.badge} px-3 py-1 font-body text-xs font-700 text-ink`}>
+                  <span className="text-2xl sm:text-4xl">{p.emoji}</span>
+                  <div className="mt-2 sm:mt-3">
+                    <h3 className="card-title-bold">{p.name}</h3>
+                    <span className={`mt-1 inline-block rounded-full ${c.badge} px-2 py-0.5 font-body text-[0.7rem] font-700 text-ink sm:px-3 sm:py-1 sm:text-xs`}>
                       {p.age}
                     </span>
                   </div>
-                  <ul className="mt-4 space-y-1.5">
+                  <ul className="mt-2.5 space-y-1 sm:mt-4 sm:space-y-1.5">
                     {p.activities.map((a) => (
-                      <li key={a} className="flex items-center gap-2 font-body text-sm text-ink/70">
-                        <span className={`h-1.5 w-1.5 rounded-full ${c.dot}`} />
+                      <li key={a} className="card-text flex items-start gap-1.5 text-ink/70 sm:items-center sm:gap-2">
+                        <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full sm:mt-0 ${c.dot}`} />
                         {a}
                       </li>
                     ))}
@@ -155,10 +155,10 @@ export function Activities() {
               className="reveal group glass glass-hover flex items-center gap-4 rounded-3xl p-4"
               style={{ transitionDelay: `${i * 45}ms` }}
             >
-              <div className="hover-pop h-16 w-16 shrink-0">{miniArt[a.key]}</div>
+              <div className="hover-pop h-12 w-12 shrink-0 sm:h-16 sm:w-16">{miniArt[a.key]}</div>
               <div className="min-w-0">
-                <div className="font-display font-700 text-ink leading-tight">{a.name}</div>
-                <div className="font-body text-xs text-ink/50">Hands-on fun</div>
+                <div className="card-title-bold leading-tight">{a.name}</div>
+                <div className="font-body text-xs text-ink/50 sm:text-xs">Hands-on fun</div>
               </div>
             </article>
           ))}
@@ -197,8 +197,8 @@ export function Method() {
                     {i + 1}
                   </span>
                 </div>
-                <h3 className={`mt-3 font-display font-700 ${methodChip[m.color]}`}>{m.step}</h3>
-                <p className="mt-1 font-body text-xs text-ink/60">{m.text}</p>
+                <h3 className={`card-title-bold mt-2.5 sm:mt-3 ${methodChip[m.color]}`}>{m.step}</h3>
+                <p className="card-text mt-1 text-ink/60">{m.text}</p>
               </li>
             ))}
           </ol>
@@ -216,8 +216,8 @@ export function Method() {
                 </span>
               </div>
               <div className="pt-2">
-                <h3 className={`font-display font-700 ${methodChip[m.color]}`}>{m.step}</h3>
-                <p className="mt-0.5 font-body text-sm text-ink/60">{m.text}</p>
+                <h3 className={`card-title-bold ${methodChip[m.color]}`}>{m.step}</h3>
+                <p className="card-text mt-0.5 text-ink/60">{m.text}</p>
               </div>
             </li>
           ))}

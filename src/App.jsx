@@ -6,6 +6,7 @@ import { Gallery, Testimonials, Facilities, Admissions } from './components/Show
 import FAQ from './components/FAQ.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import MobileCTABar from './components/MobileCTABar.jsx';
 
 export default function App() {
   useReveal();
@@ -13,7 +14,7 @@ export default function App() {
     <>
       <Orbs />
       <Navbar />
-      <main>
+      <main className="pb-[5.5rem] sm:pb-0">
         <Hero />
         <About />
         <WhyUs />
@@ -28,6 +29,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <MobileCTABar />
     </>
   );
 }

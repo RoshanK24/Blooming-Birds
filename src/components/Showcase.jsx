@@ -26,9 +26,9 @@ export function Gallery() {
                 <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.06]">
                   {scenes[g.key]}
                 </div>
-                <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-ink/90 via-ink/45 to-transparent px-3.5 pb-3 pt-9">
-                  <span className="text-xl drop-shadow-md">{g.emoji}</span>
-                  <span className="font-display font-700 text-white text-base drop-shadow-md">{g.label}</span>
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-1.5 bg-gradient-to-t from-ink/90 via-ink/45 to-transparent px-2.5 pb-2 pt-7 sm:gap-2 sm:px-3.5 sm:pb-3 sm:pt-9">
+                  <span className="text-base drop-shadow-md sm:text-xl">{g.emoji}</span>
+                  <span className="font-display text-sm font-700 text-white drop-shadow-md sm:text-base">{g.label}</span>
                 </figcaption>
               </div>
             </figure>
@@ -74,18 +74,18 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <article
               key={t.name}
-              className="reveal glass glass-hover flex w-[84%] shrink-0 snap-center flex-col rounded-[1.75rem] p-6 sm:w-[47%] lg:w-auto"
+              className="reveal glass glass-hover flex w-[84%] shrink-0 snap-center flex-col rounded-2xl p-4 sm:w-[47%] sm:rounded-[1.75rem] sm:p-6 lg:w-auto"
               style={{ transitionDelay: `${i * 90}ms` }}
             >
-              <div className="text-lg text-amber-400">★★★★★</div>
-              <p className="mt-3 grow font-body text-ink/75">&ldquo;{t.text}&rdquo;</p>
-              <div className="mt-5 flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-coral/30 to-lavender/30 text-xl">
+              <div className="text-base text-amber-400 sm:text-lg">★★★★★</div>
+              <p className="card-text mt-2 grow text-ink/75 sm:mt-3">&ldquo;{t.text}&rdquo;</p>
+              <div className="mt-4 flex items-center gap-2.5 sm:mt-5 sm:gap-3">
+                <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-coral/30 to-lavender/30 text-lg sm:h-11 sm:w-11 sm:text-xl">
                   {t.emoji}
                 </span>
                 <div>
-                  <div className="font-display font-700 text-ink">{t.name}</div>
-                  <div className="font-body text-xs text-ink/55">{t.role}</div>
+                  <div className="card-title-bold">{t.name}</div>
+                  <div className="font-body text-xs text-ink/55 sm:text-xs">{t.role}</div>
                 </div>
               </div>
             </article>
@@ -112,11 +112,31 @@ export function Testimonials() {
 
 /* ---------------- Facilities (interactive flip cards) --------------------- */
 const facilityStyles = {
-  coral: { grad: 'from-coral to-sunshine', soft: 'bg-coral/15' },
-  sky: { grad: 'from-sky to-lavender', soft: 'bg-sky/15' },
-  mint: { grad: 'from-mint to-sky', soft: 'bg-mint/15' },
-  lavender: { grad: 'from-lavender to-coral', soft: 'bg-lavender/15' },
-  sunshine: { grad: 'from-sunshine to-mint', soft: 'bg-sunshine/20' },
+  coral: {
+    soft: 'bg-coral/15',
+    back: 'linear-gradient(140deg, #FFF5F0 0%, #FFE8DC 50%, #FFF0E6 100%)',
+    accent: '#FF8C6B',
+  },
+  sky: {
+    soft: 'bg-sky/15',
+    back: 'linear-gradient(140deg, #F0F9FF 0%, #E8F4FF 50%, #EDE8FF 100%)',
+    accent: '#6FC3E8',
+  },
+  mint: {
+    soft: 'bg-mint/15',
+    back: 'linear-gradient(140deg, #F0FFF8 0%, #E5FAF2 50%, #E8F6FF 100%)',
+    accent: '#7ED9B0',
+  },
+  lavender: {
+    soft: 'bg-lavender/15',
+    back: 'linear-gradient(140deg, #F8F4FF 0%, #F0EBFF 50%, #FFF0F5 100%)',
+    accent: '#B49BE8',
+  },
+  sunshine: {
+    soft: 'bg-sunshine/20',
+    back: 'linear-gradient(140deg, #FFFBF0 0%, #FFF5E0 50%, #F0FFF8 100%)',
+    accent: '#FFC15E',
+  },
 };
 
 export function Facilities() {
@@ -129,34 +149,48 @@ export function Facilities() {
         <SectionHead
           eyebrow="🏡 Our Campus"
           title="Everything little ones need to thrive"
-          sub="Tap or hover any card to flip it and see what makes each space special."
+          sub="Tap or hover any card to flip and see what makes each space special."
         />
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {facilities.map((f, i) => {
             const s = facilityStyles[f.color];
+            const isOpen = !!flipped[i];
             return (
-              <div
-                key={f.name}
-                onClick={() => toggle(i)}
-                className={`flip reveal h-44 cursor-pointer ${flipped[i] ? 'is-flipped' : ''}`}
-                style={{ transitionDelay: `${i * 45}ms` }}
-              >
-                <div className="flip-inner">
-                  {/* front (solid — no backdrop-filter) */}
-                  <div className="flip-face flip-front text-center">
-                    <span className={`grid h-20 w-20 place-items-center rounded-3xl ${s.soft} text-5xl`}>
-                      {f.emoji}
-                    </span>
-                    <span className="mt-3 font-display font-700 text-base text-ink">{f.name}</span>
-                    <span className="mt-1 font-body text-[0.62rem] font-600 uppercase tracking-wide text-ink/40">
-                      Tap to flip
-                    </span>
-                  </div>
-                  {/* back */}
-                  <div className={`flip-face flip-back bg-gradient-to-br ${s.grad} px-4 text-center`}>
-                    <span className="text-4xl">{f.emoji}</span>
-                    <span className="mt-2 font-display font-700 text-lg leading-tight text-white">{f.name}</span>
-                    <span className="mt-2 font-body text-sm leading-snug text-white/95">{f.desc}</span>
+              <div key={f.name} className="reveal" style={{ transitionDelay: `${i * 45}ms` }}>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => toggle(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      toggle(i);
+                    }
+                  }}
+                  aria-expanded={isOpen}
+                  aria-label={isOpen ? `Hide details for ${f.name}` : `Show details for ${f.name}`}
+                  className={`flip-scene h-44 ${isOpen ? 'is-flipped' : ''}`}
+                >
+                  <div className="flip-card">
+                    <div className="flip-face flip-face-front">
+                      <span className={`grid h-14 w-14 place-items-center rounded-2xl text-3xl sm:h-20 sm:w-20 sm:rounded-3xl sm:text-5xl ${s.soft}`}>
+                        {f.emoji}
+                      </span>
+                      <span className="card-title-bold mt-2 sm:mt-3">{f.name}</span>
+                      <span className="mt-0.5 font-body text-[0.65rem] font-600 uppercase tracking-wide text-ink/40 sm:mt-1 sm:text-[0.62rem]">
+                        Tap to see
+                      </span>
+                    </div>
+                    <div
+                      className="flip-face flip-face-back"
+                      style={{ background: s.back, borderColor: `${s.accent}33` }}
+                    >
+                      <span className="text-2xl sm:text-4xl">{f.emoji}</span>
+                      <span className="card-title-bold mt-1.5 sm:mt-2" style={{ color: s.accent }}>
+                        {f.name}
+                      </span>
+                      <span className="card-text mt-1.5 text-ink/70 sm:mt-2">{f.desc}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -197,8 +231,8 @@ export function Admissions() {
                       {i + 1}
                     </span>
                   </div>
-                  <h3 className="mt-4 font-display font-700 text-ink">{a.step}</h3>
-                  <p className="mt-1 font-body text-sm text-ink/60">{a.text}</p>
+                  <h3 className="card-title-bold mt-3 sm:mt-4">{a.step}</h3>
+                  <p className="card-text mt-1 text-ink/60">{a.text}</p>
                 </li>
               ))}
             </ol>
@@ -216,17 +250,17 @@ export function Admissions() {
                   </span>
                 </div>
                 <div className="pt-1">
-                  <h3 className="font-display font-700 text-ink">{a.step}</h3>
-                  <p className="mt-0.5 font-body text-sm text-ink/60">{a.text}</p>
+                  <h3 className="card-title-bold">{a.step}</h3>
+                  <p className="card-text mt-0.5 text-ink/60">{a.text}</p>
                 </div>
               </li>
             ))}
           </ol>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5">
-            <Logo size={140} withText={false} link={false} className="drop-shadow-sm" />
+            <Logo size={120} link={false} className="drop-shadow-sm" />
             <div className="text-center sm:text-left">
-              <p className="mb-2 font-display font-600 text-ink">Ready when you are — we'll guide every step!</p>
+              <p className="card-title mb-2 sm:font-600">Ready when you are — we'll guide every step!</p>
               <a href="#contact" className="btn-primary">Start Step 1 — Book a Visit →</a>
             </div>
           </div>

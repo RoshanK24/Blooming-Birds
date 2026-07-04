@@ -20,7 +20,7 @@ export default function Navbar() {
           scrolled ? 'glass-strong' : 'glass'
         }`}
       >
-        <Logo size={44} withText />
+        <Logo size={52} />
 
         <ul className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
@@ -66,7 +66,7 @@ export default function Navbar() {
               <a
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-2xl px-4 py-3 font-body font-600 text-ink/80 hover:bg-white/60"
+                className="block rounded-2xl px-3 py-2.5 font-body text-base font-600 text-ink/80 hover:bg-white/60 sm:px-4 sm:py-3"
               >
                 {n.label}
               </a>
