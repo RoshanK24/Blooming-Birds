@@ -1,20 +1,44 @@
 import logoFull from '../assets/logo-full.png';
 
-export default function Logo({ size = 52, link = true, className = '' }) {
+function LogoText() {
+  return (
+    <span className="min-w-0 leading-none">
+      <span className="block font-display text-base font-700 sm:text-[1.15rem]" style={{ color: '#3E9E99' }}>
+        Blooming Birds
+      </span>
+      <span
+        className="block font-body text-[0.58rem] font-600 tracking-[0.1em] lowercase sm:text-[0.6rem] sm:tracking-[0.12em]"
+        style={{ color: '#E08A5E' }}
+      >
+        where little minds bloom
+      </span>
+    </span>
+  );
+}
+
+export default function Logo({ size = 44, withText = true, link = true, className = '' }) {
   const content = (
-    <img
-      src={logoFull}
-      alt="Blooming Birds — where little minds bloom"
-      style={{ height: size, width: 'auto' }}
-      className="block shrink-0 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-    />
+    <>
+      <img
+        src={logoFull}
+        alt={withText ? '' : 'Blooming Birds — where little minds bloom'}
+        aria-hidden={withText || undefined}
+        style={{ height: size, width: 'auto' }}
+        className="shrink-0 object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+      />
+      {withText && <LogoText />}
+    </>
   );
 
-  const sharedClass = `group shrink-0 ${className}`;
+  const sharedClass = `group flex shrink-0 items-center gap-2 sm:gap-2.5 ${className}`;
 
   if (link) {
     return (
-      <a href="#top" className={sharedClass} aria-label="Blooming Birds home">
+      <a
+        href="#top"
+        className={sharedClass}
+        aria-label="Blooming Birds — where little minds bloom"
+      >
         {content}
       </a>
     );

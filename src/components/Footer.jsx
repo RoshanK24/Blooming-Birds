@@ -4,7 +4,7 @@ import { nav, contact } from '../data.js';
 export default function Footer() {
   return (
     <footer className="px-4 pb-[5.5rem] pt-10 sm:pb-8">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         {/* CTA band */}
         <div className="glass-strong relative overflow-hidden rounded-[1.5rem] p-6 text-center sm:rounded-[2rem] sm:p-12">
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-coral/30 blur-3xl" />
@@ -21,7 +21,7 @@ export default function Footer() {
         {/* Links */}
         <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Logo size={72} />
+            <Logo size={52} withText />
             <p className="card-text mt-3 max-w-xs sm:mt-4">
               An activity-based preschool in Dehradun, founded by a PhD Scientist &amp; Mom — where little
               minds bloom every day.

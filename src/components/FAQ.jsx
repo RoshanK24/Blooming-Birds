@@ -6,7 +6,7 @@ export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
     <section id="faqs" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="❓ Good to Know" title="Questions parents often ask" />
         <div className="grid items-start gap-3 lg:grid-cols-2 lg:gap-4">
           {faqs.map((f, i) => {

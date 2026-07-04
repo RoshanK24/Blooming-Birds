@@ -9,7 +9,7 @@ import Logo from './Logo.jsx';
 export function Gallery() {
   return (
     <section id="gallery" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="📸 A Peek Inside"
           title="Little moments, big smiles"
@@ -63,7 +63,7 @@ export function Testimonials() {
 
   return (
     <section className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="⭐ Loved by Parents" title="Words from our Blooming Birds family" />
 
         <div
@@ -145,7 +145,7 @@ export function Facilities() {
 
   return (
     <section id="facilities" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="🏡 Our Campus"
           title="Everything little ones need to thrive"
@@ -206,7 +206,7 @@ export function Facilities() {
 export function Admissions() {
   return (
     <section id="admissions" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="🎈 Admissions"
           title="Joining us is as easy as 1-2-3"
@@ -258,7 +258,7 @@ export function Admissions() {
           </ol>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5">
-            <Logo size={120} link={false} className="drop-shadow-sm" />
+            <Logo size={120} withText={false} link={false} className="drop-shadow-sm" />
             <div className="text-center sm:text-left">
               <p className="card-title mb-2 sm:font-600">Ready when you are — we'll guide every step!</p>
               <a href="#contact" className="btn-primary">Start Step 1 — Book a Visit →</a>

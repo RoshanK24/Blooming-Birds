@@ -3,7 +3,7 @@ import { heroStats } from '../data.js';
 export default function Hero() {
   return (
     <section id="top" className="relative px-4 pt-32 pb-16 sm:pt-36 sm:pb-24">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Copy */}
         <div className="text-center lg:text-left">
           <span className="eyebrow animate-bloom">

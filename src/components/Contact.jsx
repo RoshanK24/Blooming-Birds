@@ -26,7 +26,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="px-4 py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="🌟 Let's Talk"
           title="Come see us bloom in person"

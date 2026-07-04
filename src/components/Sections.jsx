@@ -30,7 +30,7 @@ const gradLight = {
 export function About() {
   return (
     <section id="about" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="🌷 Our Philosophy"
           title="A preschool built by a scientist, run with a mother's heart"
@@ -61,7 +61,7 @@ const whyCycle = ['coral', 'sky', 'mint', 'lavender', 'sunshine', 'coral', 'sky'
 export function WhyUs() {
   return (
     <section id="why" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead eyebrow="💛 Why Parents Choose Us" title="Little things we do, that make a big difference" />
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {whyUs.map((w, i) => {
@@ -97,7 +97,7 @@ const programColors = {
 export function Programs() {
   return (
     <section id="programs" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="📚 Our Programs"
           title="The right nest for every age"
@@ -142,7 +142,7 @@ export function Programs() {
 export function Activities() {
   return (
     <section id="activities" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="🎪 Daily Activities"
           title="Every day is a new adventure"
@@ -176,7 +176,7 @@ const methodChip = {
 export function Method() {
   return (
     <section id="method" className="px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHead
           eyebrow="🌱 The Blooming Method"
           title="How a little seed becomes a confident child"
