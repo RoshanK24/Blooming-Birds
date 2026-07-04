@@ -195,6 +195,9 @@ export const contact = {
   phone: '+91 98765 43210',
   email: 'hello@bloomingbirds.in',
   hours: 'Mon – Sat, 9:00 AM – 4:00 PM',
+  mapEmbed:
+    'https://maps.google.com/maps?q=Neshvilla+Road,+Dehradun,+Uttarakhand&z=15&output=embed',
+  mapLink: 'https://maps.google.com/?q=Neshvilla+Road,+Dehradun,+Uttarakhand',
 };
 
 export const programOptions = ['Play Group', 'Nursery', 'LKG', 'UKG'];

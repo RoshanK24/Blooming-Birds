@@ -14,7 +14,7 @@ export default function App() {
     <>
       <Orbs />
       <Navbar />
-      <main className="pb-[5.5rem] sm:pb-0">
+      <main className="pb-[4.5rem] sm:pb-0">
         <Hero />
         <About />
         <WhyUs />

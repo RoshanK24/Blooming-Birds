@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Logo from './Logo.jsx';
 import { nav } from '../data.js';
+import { scrollToVisit } from '../utils/scrollToVisit.js';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,20 +15,20 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-2 sm:px-5 sm:pt-3">
       <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between overflow-visible rounded-full px-4 py-3 sm:px-6 transition-all duration-300 ${
+        className={`mx-auto flex max-w-7xl items-center justify-between overflow-visible rounded-full px-3 py-1.5 sm:px-5 sm:py-2 transition-all duration-300 ${
           scrolled ? 'glass-strong' : 'glass'
         }`}
       >
-        <Logo size={44} withText />
+        <Logo size={34} withText />
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {nav.map((n) => (
             <li key={n.href}>
               <a
                 href={n.href}
-                className="rounded-full px-3.5 py-2 font-body font-600 text-[0.9rem] text-ink/75 transition-colors hover:bg-white/60 hover:text-ink"
+                className="rounded-full px-3 py-1.5 font-body text-sm font-600 text-ink/75 transition-colors hover:bg-white/60 hover:text-ink"
               >
                 {n.label}
               </a>
@@ -35,13 +36,13 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
-          <a href="#contact" className="btn-primary hidden !px-5 !py-2.5 text-sm sm:inline-flex">
+        <div className="flex items-center gap-1.5">
+          <a href="#visit-form" onClick={scrollToVisit} className="btn-primary hidden !px-4 !py-2 text-sm sm:inline-flex">
             Enroll Now
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full glass-tint lg:hidden"
+            className="grid h-8 w-8 place-items-center rounded-full glass-tint lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={open}
           >
@@ -73,7 +74,14 @@ export default function Navbar() {
             </li>
           ))}
           <li className="col-span-2 mt-1">
-            <a href="#contact" onClick={() => setOpen(false)} className="btn-primary w-full">
+            <a
+              href="#visit-form"
+              onClick={(e) => {
+                setOpen(false);
+                scrollToVisit(e);
+              }}
+              className="btn-primary w-full"
+            >
               Enroll Now
             </a>
           </li>

@@ -1,8 +1,9 @@
 import { heroStats } from '../data.js';
+import { scrollToVisit } from '../utils/scrollToVisit.js';
 
 export default function Hero() {
   return (
-    <section id="top" className="relative px-4 pt-32 pb-16 sm:pt-36 sm:pb-24">
+    <section id="top" className="relative px-4 pt-28 pb-16 sm:pt-32 sm:pb-24">
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Copy */}
         <div className="text-center lg:text-left">
@@ -20,7 +21,7 @@ export default function Hero() {
             and kindness grow little humans, not just students.
           </p>
           <div className="mt-8 hidden flex-wrap items-center justify-center gap-3 sm:flex lg:justify-start">
-            <a href="#contact" className="btn-primary">Book a Visit →</a>
+            <a href="#visit-form" onClick={scrollToVisit} className="btn-primary">Book a Visit →</a>
             <a href="#programs" className="btn-ghost glass">Explore Programs</a>
           </div>
 

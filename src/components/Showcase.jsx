@@ -4,6 +4,7 @@ import { SectionHead } from './Sections.jsx';
 import { scenes } from './GalleryArt.jsx';
 import { miniArt } from './MiniArt.jsx';
 import Logo from './Logo.jsx';
+import { scrollToVisit } from '../utils/scrollToVisit.js';
 
 /* ---------------- Gallery (interactive illustrated scenes) ---------------- */
 export function Gallery() {
@@ -261,7 +262,7 @@ export function Admissions() {
             <Logo size={120} withText={false} link={false} className="drop-shadow-sm" />
             <div className="text-center sm:text-left">
               <p className="card-title mb-2 sm:font-600">Ready when you are — we'll guide every step!</p>
-              <a href="#contact" className="btn-primary">Start Step 1 — Book a Visit →</a>
+              <a href="#visit-form" onClick={scrollToVisit} className="btn-primary">Start Step 1 — Book a Visit →</a>
             </div>
           </div>
         </div>

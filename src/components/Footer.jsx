@@ -1,9 +1,10 @@
 import Logo from './Logo.jsx';
 import { nav, contact } from '../data.js';
+import { scrollToVisit } from '../utils/scrollToVisit.js';
 
 export default function Footer() {
   return (
-    <footer className="px-4 pb-[5.5rem] pt-10 sm:pb-8">
+    <footer className="px-4 pb-[4.5rem] pt-10 sm:pb-8">
       <div className="mx-auto max-w-7xl">
         {/* CTA band */}
         <div className="glass-strong relative overflow-hidden rounded-[1.5rem] p-6 text-center sm:rounded-[2rem] sm:p-12">
@@ -14,7 +15,7 @@ export default function Footer() {
             <p className="body-lg mx-auto mt-2 max-w-lg sm:mt-3">
               Seats fill fast each season. Book a visit today and see the joy for yourself.
             </p>
-            <a href="#contact" className="btn-primary mt-6">Book a Visit →</a>
+            <a href="#visit-form" onClick={scrollToVisit} className="btn-primary mt-6">Book a Visit →</a>
           </div>
         </div>
 
