@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body text-ink antialiased;
+  background:
+    radial-gradient(1100px 700px at 12% -8%, #ffe3d1 0%, transparent 55%),
+    radial-gradient(900px 650px at 92% 4%, #d7ecff 0%, transparent 55%),
+    radial-gradient(1000px 750px at 78% 96%, #e4e0ff 0%, transparent 50%),
+    radial-gradient(900px 700px at 4% 88%, #d5f5e8 0%, transparent 55%),
+    linear-gradient(180deg, #fff8f0 0%, #fdf3ff 45%, #f3f9ff 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@layer components {
+  /* Frosted liquid-glass surface */
+  .glass {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 8px 32px rgba(74, 59, 82, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+      0 10px 40px rgba(74, 59, 82, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .glass-tint {
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+  }
+
+  .glass-hover {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease, background 0.35s ease;
+  }
+  .glass-hover:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.66);
+    box-shadow:
+      0 18px 48px rgba(74, 59, 82, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display font-600 text-white transition-all duration-300;
+    background: linear-gradient(135deg, #ff8c6b 0%, #ffab5e 100%);
+    box-shadow: 0 10px 26px rgba(255, 140, 107, 0.42);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(255, 140, 107, 0.5);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display font-600 text-ink transition-all duration-300;
+  }
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-display font-600 text-sm;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+  }
+
+  .section-title {
+    @apply font-display font-700 text-ink leading-tight;
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.gradient-text {
+  background: linear-gradient(120deg, #ff8c6b, #b49be8 45%, #6fc3e8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 155, 232, 0.5);
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Interactive gallery scene motion ---- */
+.svg-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes bobY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes swayRot {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.75); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+@keyframes kidHop {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-9px); }
+  55% { transform: translateY(0); }
+}
+.sc-sun { animation: spinSlow 26s linear infinite; }
+.sc-bob { animation: bobY 3.4s ease-in-out infinite; }
+.sc-bob-2 { animation: bobY 4.1s ease-in-out infinite; animation-delay: -1s; }
+.sc-sway { animation: swayRot 3.6s ease-in-out infinite; }
+.sc-twinkle { animation: twinkle 2.2s ease-in-out infinite; }
+.sc-twinkle-2 { animation: twinkle 2.8s ease-in-out infinite; animation-delay: -0.9s; }
+.sc-kid { transform-origin: bottom center; }
+/* hover: kids come alive */
+.gal-fig:hover .sc-kid { animation: kidHop 0.8s ease-in-out infinite; }
+.gal-fig:hover .sc-bob,
+.gal-fig:hover .sc-bob-2 { animation-duration: 1.6s; }
+
+/* ---- Carousel ---- */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ---- Flip cards (facilities) ---- */
+.flip { perspective: 1000px; }
+@keyframes mascotWave {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(18deg); }
+}
+.mascot-wave { animation: mascotWave 1.8s ease-in-out infinite; }
+@keyframes popWiggle {
+  0%, 100% { transform: rotate(0) scale(1); }
+  30% { transform: rotate(-7deg) scale(1.08); }
+  60% { transform: rotate(7deg) scale(1.08); }
+}
+.group:hover .hover-pop { animation: popWiggle 0.6s ease-in-out; }
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+.flip:hover .flip-inner,
+.flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  padding: 0.75rem;
+}
+.flip-back { transform: rotateY(180deg); }
+/* solid faces (no backdrop-filter) so the 3D flip never flattens/disappears */
+.flip-front {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 30px rgba(74, 59, 82, 0.1);
+}
+.flip:hover { z-index: 2; }
